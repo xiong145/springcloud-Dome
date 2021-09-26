@@ -8,6 +8,9 @@ import com.springboot.bean.BlogProperties;
 import com.springboot.bean.ConfigBean;
 import com.springboot.bean.TestConfigBean;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 @RestController
 public class IndexController {
@@ -19,7 +22,11 @@ public class IndexController {
 	private TestConfigBean testConfigBean;
 	
 	@RequestMapping("/")
-	String index() {
-		return testConfigBean.getName()+"，"+testConfigBean.getAge();
+	Map index() {
+		HashMap hashMap = new HashMap();
+		hashMap.put("testConfigBean", testConfigBean.getAge()+testConfigBean.getName());
+		hashMap.put("blogProperties", blogProperties);
+		hashMap.put("configBean", configBean);
+		return hashMap;
 	}
 }
