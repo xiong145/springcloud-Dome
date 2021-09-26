@@ -17,6 +17,8 @@ public class OracleStudentDaoImp implements OracleStudentDao{
 	@Qualifier("oracleJdbcTemplate")
 	private JdbcTemplate jdbcTemplate;
 
+
+
 	@Override
 	public List<Map<String, Object>> getAllStudents() {
 		return this.jdbcTemplate.queryForList("select * from student");
